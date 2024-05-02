@@ -12,6 +12,16 @@ CREATE TABLE user(
     FOREIGN KEY(nat_code) REFERENCES country(country_id)
 );
 
+CREATE user_address(
+    u_a_id INT(3) NOT NULL AUTO_INCREMENT,
+    user_id INT(6) NOT NULL,
+    add_detail VARCHAR(127),
+    zipcode CHAR(5)
+    PRIMARY(u_a_id),
+    FOREIGN KEY(user_id) REFERENCES user(user_id),
+    FOREIGN KEY(zipcode) REFERENCES city(city_id)
+)
+
 
 CREATE TABLE order(
     order_id INT(6) NOT NULL AUTO_INCREMENT,
