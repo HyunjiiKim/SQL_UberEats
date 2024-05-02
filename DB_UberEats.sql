@@ -12,7 +12,7 @@ CREATE TABLE user(
     FOREIGN KEY(nat_code) REFERENCES country(country_id)
 );
 
-CREATE user_address(
+CREATE TABLE user_address(
     u_a_id INT(3) NOT NULL AUTO_INCREMENT,
     user_id INT(6) NOT NULL,
     add_detail VARCHAR(127),
@@ -20,7 +20,8 @@ CREATE user_address(
     PRIMARY(u_a_id),
     FOREIGN KEY(user_id) REFERENCES user(user_id),
     FOREIGN KEY(zipcode) REFERENCES city(city_id)
-)
+);
+
 
 
 CREATE TABLE order(
@@ -33,7 +34,7 @@ CREATE TABLE order(
     FOREIGN KEY(user_id) REFERENCES user(user_id),
     FOREIGN KEY(u_a_id) REFERENCES user_address(u_a_id),
     FOREIGN KEY(restaurant_id) REFERENCES restaurant(restaurant_id),
-    FOREIGN KEY(delivery_id) REFERENCES delivery(delivery_id)
+    FOREIGN KEY(delivery_id) REFERENCES delivery(delivery_i)
 ); 
 
 CREATE TABLE restaurant(
@@ -44,6 +45,16 @@ CREATE TABLE restaurant(
     PRIMARY KEY(restaurant_id),
     FOREIGN KEY(zipcode) REFERENCES city(city_id)
 );
+
+CREATE TABLE menu(
+    menu_id INT(6) NOT NULL AUTO_INCREMENT,
+    restaurant_id INT(6) NOT NULL,
+    menu_name VARCHAR(127),
+    menu_description VARCHAR(255) NOT NULL,
+    menu_img BLOB DEFAULT empty_blob(),
+    PRIMARY KEY(menu_id),
+    FOREIGN KEY(restaurant_id) REFERENCES restaurant(restaurant_id)
+)
 
 CREATE TABLE delivery(
     delivery_id INT(6) NOT NULL AUTO_INCREMENT,
