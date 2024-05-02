@@ -38,6 +38,7 @@ CREATE TABLE delivery(
     first_name VARCHAR(127),
     last_name VARCHAR(127),
     mobile VARCHAR(10),
+    PRIMARY KEY(delivery_id)
 );
 
 CREATE TABLE city(
