@@ -26,10 +26,12 @@ CREATE user_address(
 CREATE TABLE order(
     order_id INT(6) NOT NULL AUTO_INCREMENT,
     user_id INT(6),
+    u_a_id INT(3),
     restaurant_id INT(6),
     delivery_id INT(6),
     PRIMARY KEY(order_id),
     FOREIGN KEY(user_id) REFERENCES user(user_id),
+    FOREIGN KEY(u_a_id) REFERENCES user_address(u_a_id),
     FOREIGN KEY(restaurant_id) REFERENCES restaurant(restaurant_id),
     FOREIGN KEY(delivery_id) REFERENCES delivery(delivery_id)
 ); 
