@@ -23,7 +23,6 @@ CREATE TABLE user_address(
 );
 
 
-
 CREATE TABLE order(
     order_id INT(6) NOT NULL AUTO_INCREMENT,
     user_id INT(6),
@@ -36,6 +35,19 @@ CREATE TABLE order(
     FOREIGN KEY(restaurant_id) REFERENCES restaurant(restaurant_id),
     FOREIGN KEY(delivery_id) REFERENCES delivery(delivery_i)
 ); 
+
+CREATE TABLE category(
+    category_id INT(6) NOT NULL AUTO_INCREMENT,
+    category_name VARCHAR(127) NOT NULL,
+    PRIMARY KEY(category_id)
+)
+
+CREATE TABLE cate_restaurant(
+    category_id INT(6) NOT NULL,
+    restaurant_id INT(6) NOT NULL,
+    FOREIGN KEY(category_id) REFERENCES category(category_id),
+    FOREIGN KEY(restaurant_id) REFERENCES restaurant(restaurant_id)
+)
 
 CREATE TABLE restaurant(
     restaurant_id INT(6) NOT NULL AUTO_INCREMENT,
